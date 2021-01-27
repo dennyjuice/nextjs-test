@@ -4,6 +4,7 @@ import axios from 'axios';
 import styles from '../styles/Gallery.module.css';
 import MainContainer from '../components/MainContainer';
 import Pagination from '../components/Pagination';
+import { GetStaticProps } from 'next';
 
 interface IProps {
   images: string[];
@@ -45,11 +46,11 @@ const Gallery: React.FC<IProps> = ({ images }) => {
 
 export default Gallery;
 
-export async function getStaticProps(): Promise<any> {
+export const getStaticProps: GetStaticProps = async (context) => {
   const response = await axios.get(`https://dog.ceo/api/breed/hound/afghan/images`);
   const images = response.data.message;
 
   return {
     props: { images },
   };
-}
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { GetStaticProps } from 'next';
 import axios from 'axios';
 
 import MainContainer from '../components/MainContainer';
@@ -28,11 +29,11 @@ const Home: React.FC<IProps> = ({ users }) => {
 
 export default Home;
 
-export async function getStaticProps(): Promise<any> {
+export const getStaticProps: GetStaticProps = async (context) => {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
   const users = response.data;
 
   return {
     props: { users },
   };
-}
+};
