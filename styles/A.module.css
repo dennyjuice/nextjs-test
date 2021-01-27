@@ -1,0 +1,12 @@
+.link {
+    padding: 0 1rem;
+    border-right: 1px solid #000;
+}
+
+.link:hover {
+    background-color: #dde2f3;
+}
+
+.link:last-child {
+    border: none;
+}

@@ -1,17 +1,9 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import MainContainer from '../components/MainContainer';
 
 export default function Home(): JSX.Element {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>NextJS Test TypeScript App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Testing Next.js!</h1>
-      </main>
-    </div>
+    <MainContainer>
+      <h1>JSON DATA</h1>
+    </MainContainer>
   );
 }
