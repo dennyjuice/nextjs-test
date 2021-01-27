@@ -20,7 +20,6 @@ const Pagination: React.FC<IPaginationProps> = ({ itemsPerPage, itemsCount, curr
     <ul className={styles.pagination}>
       {pageNumbers.map((number: number) => (
         <a
-          href="#"
           key={number}
           className={`${styles.pageItem}  ${number === currentPage && styles.isActive}`}
           onClick={() => changePage(number)}
