@@ -5,7 +5,7 @@ import MainContainer from '../components/MainContainer';
 
 const Timer: React.FC = () => {
   return (
-    <MainContainer>
+    <MainContainer title="Timer">
       <div className={styles.timer}>Timer</div>
     </MainContainer>
   );

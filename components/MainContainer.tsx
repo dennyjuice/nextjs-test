@@ -5,11 +5,15 @@ import A from './A';
 
 import styles from '../styles/MainContainer.module.css';
 
-const MainContainer: React.FC = ({ children }) => {
+interface IMainContainer {
+  title: string;
+}
+
+const MainContainer: React.FC<IMainContainer> = ({ children, title }) => {
   return (
     <>
       <Head>
-        <title>NextJS Test TypeScript App</title>
+        <title>NextJS Test TypeScript App - {title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -19,7 +23,10 @@ const MainContainer: React.FC = ({ children }) => {
         <A text="Countdown Timer" href="/timer" />
       </nav>
 
-      <main className={styles.container}>{children}</main>
+      <main className={styles.container}>
+        <h1>{title}</h1>
+        {children}
+      </main>
     </>
   );
 };

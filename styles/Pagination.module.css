@@ -1,0 +1,33 @@
+.pagination {
+  padding: 15px 0 40px;
+  list-style-type: none;
+  text-align: center;
+
+}
+
+.pageItem {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0 2px;
+}
+
+.pagination a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #222;
+}
+
+.pagination a.isActive {
+    color: #fff;
+}
+
+.pagination .isActive {
+    background-color: blue;
+    border-radius: 4px;
+}
+
+.pagination li {
+    line-height: 22px;
+}

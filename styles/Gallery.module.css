@@ -1,0 +1,15 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery figure {
+    margin: 5px;
+}
+
+.image {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
