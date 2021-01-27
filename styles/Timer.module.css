@@ -1,0 +1,12 @@
+.timer {
+    text-align: center;
+}
+
+.picker {
+    margin: 0 0 20px 10px;
+}
+
+.ytBlock {
+    display: flex;
+    justify-content: center;
+}
