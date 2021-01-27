@@ -5,10 +5,11 @@ import styles from '../styles/Pagination.module.css';
 interface IPaginationProps {
   itemsPerPage: number;
   itemsCount: number;
+  currentPage: number;
   changePage: (number) => void;
 }
 
-const Pagination: React.FC<IPaginationProps> = ({ itemsPerPage, itemsCount, changePage }) => {
+const Pagination: React.FC<IPaginationProps> = ({ itemsPerPage, itemsCount, currentPage, changePage }) => {
   const pageNumbers: number[] = [];
 
   for (let i = 1; i <= Math.floor(itemsCount / itemsPerPage); i++) {
@@ -21,7 +22,7 @@ const Pagination: React.FC<IPaginationProps> = ({ itemsPerPage, itemsCount, chan
         <a
           href="#"
           key={number}
-          className={`${styles.pageItem}  ${number === 1 && styles.isActive}`}
+          className={`${styles.pageItem}  ${number === currentPage && styles.isActive}`}
           onClick={() => changePage(number)}
         >
           <li>{number}</li>

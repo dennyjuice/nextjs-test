@@ -29,7 +29,7 @@ const Gallery: React.FC<IProps> = ({ images }) => {
 
   return (
     <MainContainer title="Gallery">
-      <div className={styles.gallery}>
+      <section className={styles.gallery}>
         {photos.map((photo) => {
           return (
             <figure key={photo}>
@@ -37,15 +37,15 @@ const Gallery: React.FC<IProps> = ({ images }) => {
             </figure>
           );
         })}
-      </div>
-      <Pagination itemsPerPage={10} itemsCount={images.length} changePage={changePage} />
+      </section>
+      <Pagination itemsPerPage={10} itemsCount={images.length} currentPage={currentPage} changePage={changePage} />
     </MainContainer>
   );
 };
 
 export default Gallery;
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<any> {
   const response = await axios.get(`https://dog.ceo/api/breed/hound/afghan/images`);
   const images = response.data.message;
 

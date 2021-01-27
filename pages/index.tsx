@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import MainContainer from '../components/MainContainer';
+
 import styles from '../styles/Home.module.css';
 
 interface IProps {
@@ -27,7 +28,7 @@ const Home: React.FC<IProps> = ({ users }) => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<any> {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
   const users = response.data;
 
