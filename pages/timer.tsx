@@ -10,7 +10,8 @@ import useTimer from '../customHooks/useTimer';
 const Timer: React.FC = () => {
   const defaultDate = new Date(Date.now() + 60 * 1000);
   const [endDate, setEndDate] = useState(defaultDate);
-  const isExpired: boolean = useTimer(endDate, '+03:00');
+  const [gmtNumber, setGmtNumber] = useState('3');
+  const isExpired: boolean = useTimer(endDate, `${gmtNumber.length > 1 ? '-' : '+'}0${gmtNumber}:00`);
 
   return (
     <MainContainer title="Timer">
@@ -26,6 +27,7 @@ const Timer: React.FC = () => {
           timeCaption="time"
           dateFormat="MMMM d, yyyy HH:mm"
         />
+        <input type="number" min="-7" max="7" defaultValue={gmtNumber} onChange={(e) => setGmtNumber(e.target.value)} />
         {isExpired && (
           <div className={styles.ytBlock}>
             <ReactPlayer url="https://www.youtube.com/watch?v=wO02uW15_WU" playing={true} volume={0} muted={true} />
