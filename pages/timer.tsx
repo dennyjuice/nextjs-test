@@ -27,6 +27,7 @@ const Timer: React.FC = () => {
           timeCaption="time"
           dateFormat="MMMM d, yyyy HH:mm"
         />
+        GMT:
         <input type="number" min="-7" max="7" defaultValue={gmtNumber} onChange={(e) => setGmtNumber(e.target.value)} />
         {isExpired && (
           <div className={styles.ytBlock}>
