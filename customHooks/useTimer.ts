@@ -1,32 +1,48 @@
 import { useEffect, useState } from 'react';
 
-export default function useTimer(deadline: Date, gmt = '+00:00'): boolean {
+interface useTimerHook {
+  isExpired: boolean;
+  countTo: Date;
+}
+
+const formatDate = (date: Date, gmt: number): number => {
+  const offset = date.getTimezoneOffset() * 60000 + gmt * 60 * 60000;
+  return (
+    Date.UTC(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      date.getUTCHours(),
+      date.getUTCMinutes(),
+      date.getUTCSeconds(),
+    ) + offset
+  );
+};
+
+export default function useTimer(deadline: Date, gmt = 0): useTimerHook {
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
-    const timer = startTimer(deadline);
+    const timer = startTimer(deadline, gmt);
     return () => clearInterval(timer);
-  }, [deadline]);
+  }, [deadline, gmt]);
 
-  const formatDate = (date, gmt) => {
-    return `${date.toISOString().slice(0, -5)}${gmt}`;
-  };
-
-  const startTimer = (deadline) => {
+  const startTimer = (deadline, gmt) => {
     let start = new Date(formatDate(new Date(), gmt));
     const end = new Date(formatDate(deadline, gmt));
-    console.log(start, end);
 
     const timer = setInterval(() => {
       start = new Date(formatDate(new Date(), gmt));
-      if (start >= end) {
-        setIsExpired(true);
-        clearInterval(timer);
-      }
+      setIsExpired(() => {
+        if (start >= end) {
+          clearInterval(timer);
+          return true;
+        }
+      });
     }, 1000);
 
     return timer;
   };
 
-  return isExpired;
+  return { isExpired, countTo: new Date(formatDate(deadline, gmt)) };
 }
