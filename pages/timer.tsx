@@ -16,19 +16,31 @@ const Timer: React.FC = () => {
   return (
     <MainContainer title="Timer">
       <section className={styles.timer}>
-        Play Video at:
-        <DatePicker
-          className={styles.picker}
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
-          timeCaption="time"
-          dateFormat="MMMM d, yyyy HH:mm"
-        />
-        GMT:
-        <input type="number" min="-7" max="7" defaultValue={gmtNumber} onChange={(e) => setGmtNumber(e.target.value)} />
+        <label>
+          Play Video at:
+          <DatePicker
+            className={styles.picker}
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="time"
+            dateFormat="MMMM d, yyyy HH:mm"
+          />
+        </label>
+
+        <label>
+          GMT:
+          <input
+            type="number"
+            min="-7"
+            max="7"
+            defaultValue={gmtNumber}
+            onChange={(e) => setGmtNumber(e.target.value)}
+          />
+        </label>
+
         {isExpired && (
           <div className={styles.ytBlock}>
             <ReactPlayer url="https://www.youtube.com/watch?v=wO02uW15_WU" playing={true} volume={0} muted={true} />

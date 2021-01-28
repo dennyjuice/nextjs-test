@@ -6,11 +6,23 @@
     margin-left: 10px;
 }
 
+.timer label {
+    display: inline-block;
+    margin-top: 10px;
+}
+
 .picker {
-    margin: 0 20px 20px 10px;
+    margin: 0 20px 0 10px;
 }
 
 .ytBlock {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 450px) {
+    .timer {
+        text-align: left;
+    }
 }
